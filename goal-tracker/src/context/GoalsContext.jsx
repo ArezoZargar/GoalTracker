@@ -115,10 +115,10 @@ case "SET_LOADING":
 export function GoalsProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
-    loading: false, // حتما اینجا باشد
+    loading: false, 
   });
 
-  // ✅ useEffect باید اینجا باشد
+
   useEffect(() => {
     dispatch({ type: "SET_LOADING", payload: true });
 

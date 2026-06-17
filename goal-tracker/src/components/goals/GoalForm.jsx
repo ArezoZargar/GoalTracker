@@ -17,11 +17,10 @@ export default function GoalFormFields({
   startDate, setStartDate,
   endDate, setEndDate,
   color, setColor,
-  notes, setNotes,
+   setNotes,
   categories,
   submitted,
-  unit,
-  setUnit,
+ 
 }) {
   const { language } = useLanguage();
 const t = language === "fa" ? fa : en;
@@ -109,7 +108,7 @@ const t = language === "fa" ? fa : en;
       />
 
       <TextField
-        label="Notes"
+        
         label={t.notes}
         onChange={(e) => setNotes(e.target.value)}
         multiline
