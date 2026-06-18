@@ -131,7 +131,6 @@ if (Object.keys(newErrors).length > 0) {
             
             category={category}
             setCategory={setCategory}
-            categories={categories}
             type={type}
             setType={setType}
             target={target}
