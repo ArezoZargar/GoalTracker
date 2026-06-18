@@ -11,9 +11,10 @@ goaltracker: "گول تراکر ",
   xp: "امتیاز",
   level: "سطح",
   streak: "رکورد",
-
+fitness : "تناسب اندام",
   recentGoals: "هدف‌های اخیر",
-
+requiredField: "این قسمت الزامی است",
+fillRequiredFields: "لطفاً همه فیلدهای ضروری را پر کنید",
   noRecentGoals: "هیچ هدف اخیری وجود ندارد",
   startCreatingGoals: "برای مشاهده هدف‌ها، اولین هدف خود را ایجاد کنید 🚀",
 

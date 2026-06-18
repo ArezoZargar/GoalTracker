@@ -11,8 +11,10 @@ import { useTheme } from "@mui/material/styles";
 import { useLanguage } from "../../context/LanguagesContext";
 import en from "../../i18n/en";
 import fa from "../../i18n/fa";
+
 export default function CreateGoal() {
      const { language } = useLanguage();
+     const [errors, setErrors] = useState({});
   const t = language === "fa" ? fa : en;
   const { dispatch } = useGoals();
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ const isDark = theme.palette.mode === "dark";
   const [endDate, setEndDate] = useState("");
   const [color, setColor] = useState("#00ff00");
   const [notes, setNotes] = useState("");
-
+const [errorAlert, setErrorAlert] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -34,7 +36,30 @@ const isDark = theme.palette.mode === "dark";
     e.preventDefault();
     setSubmitted(true);
 
-    if (!title || !target) return;
+const newErrors = {};
+
+if (!title.trim()) {
+  newErrors.title = t.requiredField;
+}
+
+if (!target) {
+  newErrors.target = t.requiredField;
+}
+
+if (!startDate) {
+  newErrors.startDate = t.requiredField;
+}
+
+if (!endDate) {
+  newErrors.endDate = t.requiredField;
+}
+
+setErrors(newErrors);
+
+if (Object.keys(newErrors).length > 0) {
+  setErrorAlert(true);
+  return;
+}
 
     dispatch({
       type: "ADD_GOAL",
@@ -88,13 +113,24 @@ const isDark = theme.palette.mode === "dark";
 </Card>
  <Card sx={{ maxWidth: 700, mx: "auto", mt: 3 }}>
       <CardContent>
-
+{errorAlert && (
+  <Alert
+    severity="error"
+    onClose={() => setErrorAlert(false)}
+    sx={{ mb: 2 }}
+  >
+    {t.fillRequiredFields}
+  </Alert>
+)}
         <form onSubmit={handleSubmit}>
           <GoalFormFields
+        
             title={title}
             setTitle={setTitle}
+            
             category={category}
             setCategory={setCategory}
+            categories={categories}
             type={type}
             setType={setType}
             target={target}
@@ -109,6 +145,7 @@ const isDark = theme.palette.mode === "dark";
             setNotes={setNotes}
             categories={categories}
             submitted={submitted}
+            errors={errors}
           />
 
           <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>

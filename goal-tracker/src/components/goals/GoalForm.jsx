@@ -19,7 +19,8 @@ export default function GoalFormFields({
   color, setColor,
    setNotes,
   categories,
-  submitted,
+  
+  errors = {},
  
 }) {
   const { language } = useLanguage();
@@ -32,7 +33,8 @@ const t = language === "fa" ? fa : en;
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
-        error={submitted && !title.trim()}
+         error={!!errors?.title}
+helperText={errors?.title}
                sx={{
     direction: language === "fa" ? "rtl" : "ltr",
   }}
@@ -47,21 +49,21 @@ const t = language === "fa" ? fa : en;
 
       <FormControl fullWidth>
        {/* <InputLabel  >{t.category}</InputLabel> */}
+<Select value={category} onChange={(e) => setCategory(e.target.value)}>
+  {categories.map((cat) => {
+    const Icon = cat.icon;
 
-        <Select value={category} onChange={(e) => setCategory(e.target.value)}>
-          {categories.map((cat) => {
-            const Icon = cat.icon;
+    return (
+      <MenuItem key={cat.value} value={cat.value}>
+        <Stack direction="row" spacing={1} alignItems="center">
+          <Icon sx={{ color: cat.color }} />
 
-            return (
-              <MenuItem key={cat.value} value={cat.value}>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <Icon sx={{ color: cat.color }} />
-                  {cat.value}
-                </Stack>
-              </MenuItem>
-            );
-          })}
-        </Select>
+          {language === "fa" ? cat.labelFa : cat.labelEn}
+        </Stack>
+      </MenuItem>
+    );
+  })}
+</Select>
       </FormControl>
 
       <Select value={type} onChange={(e) => setType(e.target.value)}>
@@ -75,6 +77,8 @@ const t = language === "fa" ? fa : en;
         label={t.target}
         value={target}
         onChange={(e) => setTarget(e.target.value)}
+        error={!!errors.target}
+  helperText={errors.target}
           sx={{
     direction: language === "fa" ? "rtl" : "ltr",
   }}
@@ -91,6 +95,8 @@ const t = language === "fa" ? fa : en;
         type="date"
         value={startDate}
         onChange={(e) => setStartDate(e.target.value)}
+        error={!!errors.startDate}
+  helperText={errors.startDate}
         InputLabelProps={{ shrink: true }}
       />
 
@@ -98,6 +104,8 @@ const t = language === "fa" ? fa : en;
         type="date"
         value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
+        error={!!errors.endDate}
+  helperText={errors.endDate}
         InputLabelProps={{ shrink: true }}
       />
 

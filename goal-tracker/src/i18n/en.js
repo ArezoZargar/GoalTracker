@@ -11,9 +11,10 @@ const en = {
   xp: "XP",
   level: "Level",
   streak: "Streak",
-
+  fitness:"Fitness",
   recentGoals: "Recent Goals",
-
+requiredField: "This field is required",
+fillRequiredFields: "Please fill all required fields",
   noRecentGoals: "No Recent Goals",
   startCreatingGoals:
     "Start creating goals to see them here 🚀",

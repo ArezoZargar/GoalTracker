@@ -151,7 +151,7 @@ const categoryLabels = {
           return (
             <Card key={category} sx={{ mb: 2, p: 2, height: 120, width: "100%" }}>
            <Typography variant="h6">
-  {categoryLabels[category]}
+  {categoryLabels[category] || category}
 </Typography>
               <Box
                 sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}

@@ -8,29 +8,39 @@ const categories = [
   {
     value: "Study",
     icon: SchoolIcon,
+     labelEn: "Study",
+    labelFa: "مطالعه",
     color: "#3B82F6", // Blue
   },
 
   {
     value: "Work",
+      labelEn: "Work",
+    labelFa: "کار",
     icon: WorkRoundedIcon,
     color: "#F59E0B", // Amber
   },
 
   {
     value: "Health",
+      labelEn: "Health",
+    labelFa: "سلامتی",
     icon: FavoriteRoundedIcon,
     color: "#EF4444", // Red
   },
 
   {
     value: "Fitness",
+     labelEn: "Fitness",
+    labelFa: "تناسب اندام",
     icon: FitnessCenterRoundedIcon,
     color: "#22C55E", // Green
   },
 
   {
     value: "Personal",
+     labelEn: "Personal",
+    labelFa: "شخصی",
     icon: PsychologyRoundedIcon,
     color: "#A855F7", // Purple
   },
