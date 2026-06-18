@@ -28,7 +28,7 @@ export default function CategoriesPage() {
   const activeGoals = goals.filter((g) => g.status === "active");
   const completedGoals = goals.filter((g) => g.status === "completed");
   const [categories, setCategories] = useState([
-    "Study",
+    "Study ",
     "Health",
     "Work",
     "Personal",
