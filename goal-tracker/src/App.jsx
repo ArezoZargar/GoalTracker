@@ -1,6 +1,7 @@
 import AppRoutes from "./routes/AppRoutes";
 import { useLanguage } from "./context/LanguagesContext";
 
+
 export default function App() {
 
   const { language } = useLanguage();
