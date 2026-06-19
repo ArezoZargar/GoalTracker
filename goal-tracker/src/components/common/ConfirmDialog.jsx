@@ -24,27 +24,44 @@ export default function ConfirmDialog({
   const t = language === "fa" ? fa : en;
 
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="xs">
+      <DialogTitle
+        sx={{
+          fontSize: { xs: "1rem", sm: "1.25rem" },
+          textAlign: "center",
+        }}
+      >
         {title || t.areYouSure}
       </DialogTitle>
 
-      <DialogContent>
-        <Typography variant="body2" color="text.secondary">
+      <DialogContent
+        sx={{
+          px: { xs: 2, sm: 3 },
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: { xs: "0.8rem", sm: "0.95rem" },
+            textAlign: "center",
+          }}
+        >
           {description || t.actionCannotUndo}
         </Typography>
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={onClose}>
+      <DialogActions
+        sx={{
+          flexDirection: { xs: "column", sm: "row" },
+          gap: 1,
+          p: 2,
+        }}
+      >
+        <Button onClick={onClose} fullWidth>
           {cancelText || t.cancel}
         </Button>
 
-        <Button
-          onClick={onConfirm}
-          color={color}
-          variant="contained"
-        >
+        <Button onClick={onConfirm} color={color} variant="contained" fullWidth>
           {confirmText || t.delete}
         </Button>
       </DialogActions>

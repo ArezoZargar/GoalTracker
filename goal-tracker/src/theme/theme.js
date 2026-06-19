@@ -2,11 +2,10 @@ import { createTheme } from "@mui/material/styles";
 
 export const getTheme = (mode) =>
   createTheme({
-    
     palette: {
-      mode, // 👈 فقط "light" یا "dark"
+      mode,
       primary: {
-        main: mode === "dark" ? "#22c55e" :"#24b910",
+        main: mode === "dark" ? "#22c55e" : "#24b910",
       },
       background: {
         default: mode === "dark" ? "#0b1410" : "#d0f3d0",

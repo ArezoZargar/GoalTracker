@@ -1,9 +1,4 @@
-import {
-  Box,
-  Button,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguagesContext";
@@ -15,6 +10,7 @@ export default function Sidebar() {
   const location = useLocation();
   const { language } = useLanguage();
   const t = language === "fa" ? fa : en;
+  const isRTL = language === "fa";
 
   const menu = [
     { path: "/", label: t.dashboard },
@@ -25,50 +21,47 @@ export default function Sidebar() {
   ];
 
   return (
-<Box
-  sx={{
-    width: {
-      xs: 100,   
-      sm: 190,  
-      md: 250,   
-      lg: 240,  
-    },
+    <Box
+      sx={{
+        width: {
+          xs: 100,
+          sm: 190,
+          md: 250,
+          lg: 240,
+        },
 
-    minHeight: "100vh",
-    bgcolor: "background.default",
-    borderRight: "1px solid",
-    borderColor: "divider",
-    p: {
-      xs: 0.5,
-      sm: 2,
-      md: 2.5,
-    },
-
-    position: "fixed",
-    left: 0,
-    top: 0,
-  }}
->
-      {/* HEADER */}
+        minHeight: "100vh",
+        bgcolor: "background.default",
+        borderRight: "1px solid",
+        borderColor: "divider",
+        p: {
+          xs: 0.5,
+          sm: 2,
+          md: 2.5,
+        },
+        position: "fixed",
+        top: 0,
+        [isRTL ? "right" : "left"]: 0,
+      }}
+    >
       <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 4 }}>
         <TrackChangesIcon sx={{ color: "primary.main", fontSize: 32 }} />
-     <Typography
-  variant="h6"
-  sx={{
-    fontSize: {
-      xs: "14px",
-      sm: "16px",
-      md: "18px",
-    },
-    fontWeight: "bold",
-    mb: -2,
-  }}
->
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: {
+              xs: "14px",
+              sm: "16px",
+              md: "18px",
+            },
+            fontWeight: "bold",
+            mb: -2,
+          }}
+        >
           {t.goaltracker}
         </Typography>
       </Box>
 
-      {/* MENU */}
       <Stack spacing={{ xs: 0.8, md: 1 }}>
         {menu.map((item) => (
           <Button
@@ -85,15 +78,12 @@ export default function Sidebar() {
                 location.pathname === item.path
                   ? "primary.main"
                   : "transparent",
-              color:
-                location.pathname === item.path
-                  ? "#fff"
-                  : "text.primary",
-                   fontSize: {
-      xs: "10px",   
-      sm: "13px",
-      md: "14px",   
-    },
+              color: location.pathname === item.path ? "#fff" : "text.primary",
+              fontSize: {
+                xs: "10px",
+                sm: "13px",
+                md: "14px",
+              },
             }}
           >
             {item.label}

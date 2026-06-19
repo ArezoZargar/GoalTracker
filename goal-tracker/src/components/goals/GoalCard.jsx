@@ -25,11 +25,10 @@ import {
 } from "@mui/material";
 
 export default function GoalCard({ goal }) {
-
-const { language } = useLanguage();
+  const { language } = useLanguage();
   const t = language === "fa" ? fa : en;
   const { dispatch } = useGoals();
-const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const progressPercent =
     goal.target > 0 ? Math.round((goal.progress / goal.target) * 100) : 0;
   const [openDelete, setOpenDelete] = useState(false);
@@ -41,45 +40,45 @@ const [showSuccess, setShowSuccess] = useState(false);
     Personal: "#8B5CF6",
   };
   const categoryLabels = {
-  Study: t.study,
-  Work: t.work,
-  Health: t.health,
-  Fitness: t.fitness,
-  Personal: t.personal,
-};
+    Study: t.study,
+    Work: t.work,
+    Health: t.health,
+    Fitness: t.fitness,
+    Personal: t.personal,
+  };
 
-const statusLabels = {
-  active: t.activeStatus,
-  paused: t.pausedStatus,
-  completed: t.completedStatus,
-};
+  const statusLabels = {
+    active: t.activeStatus,
+    paused: t.pausedStatus,
+    completed: t.completedStatus,
+  };
   const cardColor = categoryColor[goal.category] || "#24b910";
-const buttonStyle = {
-   borderRadius: 2,
-  fontWeight: "bold",
-  textTransform: "none",
+  const buttonStyle = {
+    borderRadius: 2,
+    fontWeight: "bold",
+    textTransform: "none",
 
-  minWidth: {
-    xs: "100%",
-    sm: "5rem",
-  },
+    minWidth: {
+      xs: "100%",
+      sm: "5rem",
+    },
 
-  height: {
-    xs: 36,
-    md: 30,
-  },
+    height: {
+      xs: 36,
+      md: 30,
+    },
 
-  fontSize: {
-    xs: "0.75rem",
-    md: "0.85rem",
-  },
+    fontSize: {
+      xs: "0.75rem",
+      md: "0.85rem",
+    },
 
-  transition: "all .2s ease",
+    transition: "all .2s ease",
 
-  "&:hover": {
-    transform: "translateY(-2px)",
-  },
-};
+    "&:hover": {
+      transform: "translateY(-2px)",
+    },
+  };
   function handleDelete() {
     dispatch({
       type: "DELETE_GOAL",
@@ -92,19 +91,19 @@ const buttonStyle = {
     <Card
       sx={{
         mb: 2,
-      
+
         overflow: "hidden",
 
         border: "1px solid",
         borderColor: "divider",
         borderLeft: `6px solid ${cardColor}`,
         transition: "all .3s ease",
-width: "100%",
+        width: "100%",
 
-borderRadius: {
-  xs: 3,
-  md: 4,
-},
+        borderRadius: {
+          xs: 3,
+          md: 4,
+        },
         "&:hover": {
           transform: "translateY(-5px)",
           boxShadow: 6,
@@ -113,103 +112,86 @@ borderRadius: {
       }}
     >
       <CardContent
-  sx={{
-    direction: language === "fa" ? "rtl" : "ltr",
-    textAlign: language === "fa" ? "right" : "left",
-  }}
->
-        {/* TITLE */}
+        sx={{
+          direction: language === "fa" ? "rtl" : "ltr",
+          textAlign: language === "fa" ? "right" : "left",
+        }}
+      >
         <Typography
-  fontWeight="bold"
-  gutterBottom
-  sx={{
-    fontSize: {
-      xs: "1.1rem",
-      sm: "1.3rem",
-      md: "1.5rem",
-    },
-  }}
->
+          fontWeight="bold"
+          gutterBottom
+          sx={{
+            fontSize: {
+              xs: "1.1rem",
+              sm: "1.3rem",
+              md: "1.5rem",
+            },
+          }}
+        >
           {goal.title}
         </Typography>
 
-        {/* CATEGORY + STATUS */}
-      <Stack
-  direction="row"
-  spacing={1}
-  mb={2}
-  flexWrap="wrap"
-  useFlexGap
->
+        <Stack direction="row" spacing={1} mb={2} flexWrap="wrap" useFlexGap>
           <Chip
             label={categoryLabels[goal.category]}
             color="success"
-          sx={{
-  bgcolor: cardColor,
-  color: "#fff",
-  fontWeight: "bold",
-  direction: language === "fa" ? "rtl" : "ltr",
-}}
+            sx={{
+              bgcolor: cardColor,
+              color: "#fff",
+              fontWeight: "bold",
+              direction: language === "fa" ? "rtl" : "ltr",
+            }}
           />
 
-          
           <Chip
-  label={statusLabels[goal.status]}
-  color={
-    goal.status === "completed"
-      ? "success"
-      : goal.status === "paused"
-      ? "warning"
-      : "primary"
-  }
-/>
+            label={statusLabels[goal.status]}
+            color={
+              goal.status === "completed"
+                ? "success"
+                : goal.status === "paused"
+                  ? "warning"
+                  : "primary"
+            }
+          />
         </Stack>
 
-        {/* TARGET */}
         <Typography variant="body2">
           {t.target}: {goal.progress}/{goal.target}
         </Typography>
 
-        {/* PERCENT */}
         <Typography variant="body2" sx={{ mt: 1 }}>
           {t.progress}: {progressPercent}%
         </Typography>
 
-        {/* PROGRESS BAR */}
         <LinearProgress
           variant="determinate"
           value={progressPercent}
           sx={{
-          height: {
-  xs: 8,
-  md: 10,
-},
+            height: {
+              xs: 8,
+              md: 10,
+            },
             borderRadius: 5,
             mb: 2,
           }}
         />
 
-        {/* BUTTONS */}
- <Box
-  sx={{
-    mt: 2,
-    display: "grid",
+        <Box
+          sx={{
+            mt: 2,
+            display: "grid",
 
-    gridTemplateColumns: {
-      xs: "1fr",
-      sm: "repeat(2,1fr)",
-      md: "repeat(3,auto)",
-    },
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2,1fr)",
+              md: "repeat(3,auto)",
+            },
 
-    gap: 1,
-  }}
->
-          {/* ADD PROGRESS */}
+            gap: 1,
+          }}
+        >
           <Button
             sx={buttonStyle}
-             
-           
-            
             size="small"
             variant="outlined"
             disabled={goal.status === "completed"}
@@ -226,7 +208,6 @@ borderRadius: {
             {t.addProgress}
           </Button>
 
-          {/* DETAILS */}
           <Button
             sx={buttonStyle}
             size="small"
@@ -237,7 +218,6 @@ borderRadius: {
             {t.details}
           </Button>
 
-          {/* PAUSE / RESUME */}
           <Button
             sx={buttonStyle}
             size="small"
@@ -250,36 +230,30 @@ borderRadius: {
               })
             }
           >
-            {goal.status === "paused"
-  ? t.resume
-  : t.pause}
+            {goal.status === "paused" ? t.resume : t.pause}
           </Button>
 
-          {/* COMPLETE */}
           <Button
-          sx={buttonStyle}
+            sx={buttonStyle}
             size="small"
-            
             variant="outlined"
             disabled={goal.status === "completed"}
             onClick={() => {
-  dispatch({
-    type: "MARK_COMPLETE",
-    payload: goal.id,
-  });
+              dispatch({
+                type: "MARK_COMPLETE",
+                payload: goal.id,
+              });
 
-  setShowSuccess(true);
+              setShowSuccess(true);
 
-  setTimeout(() => {
-    setShowSuccess(false);
-  }, 1500);
-}}
-            
+              setTimeout(() => {
+                setShowSuccess(false);
+              }, 1500);
+            }}
           >
             {t.complete}
           </Button>
 
-          {/* EDIT */}
           <Button
             sx={buttonStyle}
             size="small"
@@ -291,43 +265,38 @@ borderRadius: {
             {t.edit}
           </Button>
 
-          {/* DELETE */}
           <>
-            {/* کارت */}
-
             <Button
-             sx={buttonStyle}
+              sx={buttonStyle}
               variant="outlined"
-              
               onClick={() => setOpenDelete(true)}
             >
               {t.delete}
             </Button>
 
-            {/* CONFIRM DIALOG */}
             <ConfirmDialog
-  open={openDelete}
-  onClose={() => setOpenDelete(false)}
-  onConfirm={handleDelete}
-/>
+              open={openDelete}
+              onClose={() => setOpenDelete(false)}
+              onConfirm={handleDelete}
+            />
           </>
-       </Box>
+        </Box>
       </CardContent>
       <Snackbar
-  open={showSuccess}
-  anchorOrigin={{ vertical: "top", horizontal: "center" }}
->
-  <Alert
-    severity="success"
-    sx={{
-      fontSize: "16px",
-      fontWeight: "bold",
-      animation: "pop 0.4s ease",
-    }}
-  >
-    {t.goalCompletedSuccessfully}
-  </Alert>
-</Snackbar>
+        open={showSuccess}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          severity="success"
+          sx={{
+            fontSize: "16px",
+            fontWeight: "bold",
+            animation: "pop 0.4s ease",
+          }}
+        >
+          {t.goalCompletedSuccessfully}
+        </Alert>
+      </Snackbar>
     </Card>
   );
 }

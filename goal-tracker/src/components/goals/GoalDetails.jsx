@@ -50,11 +50,14 @@ export default function GoalDetails({ goal, dispatch }) {
   };
   const buttonStyle = {
     textTransform: "none",
-
+    width: "100%",
     minWidth: 100,
     whiteSpace: "nowrap",
     paddingInline: 2,
-
+    fontSize: {
+      xs: "0.8rem",
+      sm: "1rem",
+    },
     borderRadius: 2,
     fontWeight: "bold",
     transition: "all 0.2s ease",
@@ -107,8 +110,6 @@ export default function GoalDetails({ goal, dispatch }) {
     setSuccessOpen(true);
   }
 
-  const cardColor = "#2fb235";
-
   return (
     <Box
       sx={{
@@ -116,10 +117,19 @@ export default function GoalDetails({ goal, dispatch }) {
         textAlign: language === "fa" ? "right" : "left",
       }}
     >
-      {/* HEADER */}
       <Card sx={{ mb: 2 }}>
         <CardContent>
-          <Typography variant="h4">{goal.title}</Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              fontSize: {
+                xs: "1.5rem",
+                sm: "2rem",
+              },
+            }}
+          >
+            {goal.title}
+          </Typography>
           <Typography color="text.secondary">
             {categoryLabels[goal.category]} • {typeLabels[goal.type]}
           </Typography>
@@ -129,7 +139,6 @@ export default function GoalDetails({ goal, dispatch }) {
         </CardContent>
       </Card>
 
-      {/* PROGRESS */}
       <Card
         sx={{
           mb: 3,
@@ -138,15 +147,15 @@ export default function GoalDetails({ goal, dispatch }) {
       >
         <CardContent>
           <Typography mb={1} variant="h5" fontWeight="bold">
-           {t.keepGoing} 
+            {t.keepGoing}
           </Typography>
           <Typography variant="h6" mb={2}>
             {t.progress} :
           </Typography>
 
           <Typography dir="ltr" sx={{ display: "inline-block" }}>
-  {goal.progress} / {goal.target} ({progressPercent}%)
-</Typography>
+            {goal.progress} / {goal.target} ({progressPercent}%)
+          </Typography>
 
           <LinearProgress
             variant="determinate"
@@ -155,14 +164,33 @@ export default function GoalDetails({ goal, dispatch }) {
         </CardContent>
       </Card>
 
-      {/* INFO */}
       <Box
         sx={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 2 }}
       >
         <Card>
           <CardContent>
-            <Typography color="text.secondary">{t.created}</Typography>
-            <Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: "0.75rem", sm: "0.9rem" },
+                color: "text.secondary",
+              }}
+            >
+              {t.created}
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+                fontWeight: "bold",
+              }}
+            >
+              {goal.target}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: "0.75rem", sm: "0.9rem" },
+              }}
+            >
               {new Date(goal.createdAt).toLocaleDateString()}
             </Typography>
           </CardContent>
@@ -176,8 +204,7 @@ export default function GoalDetails({ goal, dispatch }) {
         </Card>
       </Box>
 
-      {/* ACTIONS */}
-      <Stack direction="row" spacing={2} sx={{ my: 2 }}>
+      <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ my: 2 }}>
         <Button
           sx={{
             buttonStyle,
@@ -224,26 +251,48 @@ export default function GoalDetails({ goal, dispatch }) {
         </Button>
       </Stack>
 
-      {/* HISTORY */}
       <Card>
         <CardContent>
           <Typography variant="h6">{t.history}</Typography>
 
           {goal.logs.map((log) => (
-            <Box key={log.date} sx={{ pl: 2, borderLeft: "3px solid", my: 1 }}>
-              <Typography>+{log.amount}</Typography>
-            <Typography>
-  {t.progress}:{" "}
-  <Box component="span" dir="ltr">
-    {goal.progress} / {goal.target} ({progressPercent}%)
-  </Box>
-</Typography>
+            <Box
+              key={log.date}
+              sx={{
+                px: 2,
+                borderInlineStart: "3px solid",
+                my: 1,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: { xs: "0.75rem", sm: "0.95rem" },
+                  fontWeight: 500,
+                }}
+              >
+                +{log.amount}
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontSize: { xs: "0.75rem", sm: "0.95rem" },
+                }}
+              >
+                {t.progress}:{" "}
+                <Box
+                  component="span"
+                  dir="ltr"
+                  sx={{
+                    fontSize: { xs: "0.75rem", sm: "0.95rem" },
+                  }}
+                >
+                  {goal.progress} / {goal.target} ({progressPercent}%)
+                </Box>
+              </Typography>
             </Box>
           ))}
         </CardContent>
       </Card>
-
-      {/* DELETE */}
 
       <ConfirmDialog
         open={openDelete}

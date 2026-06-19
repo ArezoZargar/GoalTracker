@@ -4,16 +4,12 @@ import { load, save, STORAGE_KEYS } from "../utils/storage";
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(
-    load(STORAGE_KEYS.LANGUAGE, "en")
-  );
+  const [language, setLanguage] = useState(load(STORAGE_KEYS.LANGUAGE, "en"));
 
   useEffect(() => {
     save(STORAGE_KEYS.LANGUAGE, language);
 
-    // RTL / LTR support
-    document.documentElement.dir =
-      language === "fa" ? "rtl" : "ltr";
+    document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
   }, [language]);
 
   function toggleLanguage() {

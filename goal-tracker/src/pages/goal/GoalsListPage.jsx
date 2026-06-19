@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useGoals } from "../../context/GoalsContext";
 
 import {
-  
   Typography,
   Button,
-
   Select,
   MenuItem,
   FormControl,
@@ -32,7 +30,7 @@ export default function GoalsListPage() {
   const defaultFilter = params.get("filter") || "all";
 
   const [filter, setFilter] = useState(defaultFilter);
-  // ---------- FILTER ----------
+
   const filteredGoals = goals.filter((goal) => {
     const matchesSearch = goal.title
       .toLowerCase()
@@ -53,7 +51,6 @@ export default function GoalsListPage() {
     return true;
   });
 
-  // ---------- SORT ----------
   const sortedGoals = [...filteredGoals];
 
   if (sortBy === "progress") {
@@ -82,7 +79,7 @@ export default function GoalsListPage() {
         sortBy={sortBy}
         setSortBy={setSortBy}
       />
-      {/* EMPTY STATE */}
+
       <GoalsResults
         goals={goals}
         sortedGoals={sortedGoals}

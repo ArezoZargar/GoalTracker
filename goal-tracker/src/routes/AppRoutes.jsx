@@ -11,8 +11,8 @@ import SettingsPage from "../pages/setting/Settings";
 import LoadingState from "../components/common/LoadingState";
 import { useGoals } from "../context/GoalsContext";
 export default function AppRoutes() {
-    const { state } = useGoals(); 
-    if (state.loading) {
+  const { state } = useGoals();
+  if (state.loading) {
     return <LoadingState />;
   }
   return (
@@ -24,11 +24,9 @@ export default function AppRoutes() {
         <Route path="/goals/edit/:id" element={<EditGoalPage />} />
         <Route path="/goals/:id" element={<GoalDetailsPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
-      <Route path="/settings" element={<SettingsPage />} />
-      
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
-<Route path="*" element={<NotFoundPage />} />
-      
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

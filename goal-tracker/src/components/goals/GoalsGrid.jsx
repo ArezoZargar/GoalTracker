@@ -8,14 +8,13 @@ export default function GoalsGrid({ goals }) {
         display: "flex",
         flexWrap: "wrap",
         gap: 2,
-        
       }}
     >
       {goals.map((goal) => (
         <Box
           key={goal.id}
           sx={{
-            flex: "1 1 300px", 
+            flex: "1 1 300px",
             maxWidth: "350px",
           }}
         >

@@ -6,7 +6,7 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(
-    load(STORAGE_KEYS.THEME, "light") === "dark"
+    load(STORAGE_KEYS.THEME, "light") === "dark",
   );
 
   useEffect(() => {
@@ -25,7 +25,6 @@ export function ThemeProvider({ children }) {
     setDarkMode(true);
   }
 
-  // ✅ MUI theme اینجا ساخته می‌شود
   const muiTheme = useMemo(() => {
     return getTheme(darkMode ? "dark" : "light");
   }, [darkMode]);
@@ -37,7 +36,7 @@ export function ThemeProvider({ children }) {
         toggleTheme,
         setLight,
         setDark,
-        muiTheme, // 👈 مهم
+        muiTheme,
       }}
     >
       {children}

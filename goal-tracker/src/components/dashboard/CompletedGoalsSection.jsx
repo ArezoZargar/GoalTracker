@@ -11,9 +11,16 @@ export default function CompletedGoalsSection({ completedGoals }) {
   return (
     <>
       <Typography
-        variant="h5"
         fontWeight="bold"
-        sx={{ mt: 4, mb: 2 }}
+        sx={{
+          mt: 4,
+          mb: 2,
+          fontSize: {
+            xs: "1.2rem",
+            sm: "1.4rem",
+            md: "1.6rem",
+          },
+        }}
       >
         {t.completedArchive}
       </Typography>
@@ -22,58 +29,85 @@ export default function CompletedGoalsSection({ completedGoals }) {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          
         }}
       >
-{completedGoals.length === 0 ? (
-  <Box
-    sx={{
-      width: "100%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      py: 6,
-    }}
-  >
-    <EmptyState
-      title={t.noCompletedGoals}
-      description={t.finishGoalsToSee}
-    />
-  </Box>
-) : (
-  <Box
-    sx={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: 2,
-      justifyContent: "flex-start", 
-    }}
-  >
-    {completedGoals.slice(-4).map((goal) => (
-      <Box key={goal.id} sx={{ width: 220 }}>
-        <CompletedGoalCard goal={goal} />
-      </Box>
-    ))}
-  </Box>
-)}
-      </Box>
+        {completedGoals.length === 0 ? (
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              py: 6,
+            }}
+          >
+            <EmptyState
+              title={t.noCompletedGoals}
+              description={t.finishGoalsToSee}
+            />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexWrap: "wrap",
 
-      <Button
+              justifyContent: {
+                xs: "center",
+                sm: "flex-start",
+              },
+
+              alignItems: "flex-start",
+              gap: 2,
+            }}
+          >
+            {completedGoals.slice(-4).map((goal) => (
+              <Box
+                key={goal.id}
+                sx={{
+                  flex: {
+                    xs: "0 0 100%",
+                    sm: "0 0 260px",
+                    md: "0 0 220px",
+                  },
+
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <CompletedGoalCard goal={goal} />
+              </Box>
+            ))}
+          </Box>
+        )}
+      </Box>
+      <Box
         sx={{
-          mt: 2,
-          borderRadius: 2,
-          fontWeight: "bold",
-          transition: "all 0.3s ease",
-          "&:hover": {
-            transform: "translateY(-3px)",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+          display: "flex",
+          justifyContent: {
+            xs: "center",
+            md: "flex-start",
           },
         }}
-        component={RouterLink}
-        to="/goals?filter=completed"
       >
-       {t.viewArchive}
-      </Button>
+        <Button
+          sx={{
+            mt: 2,
+            borderRadius: 2,
+            fontWeight: "bold",
+            transition: "all 0.3s ease",
+            "&:hover": {
+              transform: "translateY(-3px)",
+              boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+            },
+          }}
+          component={RouterLink}
+          to="/goals?filter=completed"
+        >
+          {t.viewArchive}
+        </Button>
+      </Box>
     </>
   );
 }

@@ -34,12 +34,10 @@ export default function DashboardPage() {
 
   const navigate = useNavigate();
 
- 
   const { language } = useLanguage();
 
   const t = language === "fa" ? fa : en;
 
-  // 🔥 FULL PAGE BLOCK
   if (loading) {
     return <LoadingState />;
   }
@@ -64,83 +62,114 @@ export default function DashboardPage() {
 
     const link = document.createElement("a");
     link.setAttribute("href", dataStr);
-  link.setAttribute("download", t.exportFileName);
+    link.setAttribute("download", t.exportFileName);
     link.click();
   }
 
   return (
-    <Box>
-      <DashboardHero
-        navigate={navigate}
-        exportGoals={exportGoals}
-        title={t.dashboard}
-        xp={xp}
-        level={level}
-        streak={streak}
-      />
+    <div dir={language === "fa" ? "rtl" : "ltr"}>
+      <Box>
+        <DashboardHero
+          navigate={navigate}
+          exportGoals={exportGoals}
+          title={t.dashboard}
+          xp={xp}
+          level={level}
+          streak={streak}
+        />
 
-  <Box
-  sx={{
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: 2,
-    py: 3,
-  }}
->
-  <StatCard title={t.total} value={total} icon="📊" />
-  <StatCard title={t.active} value={active} icon="⚡" />
-  <StatCard title={t.completed} value={completed} icon="✅" />
-  <StatCard title={t.progress} value={`${percent}%`} icon="📈" />
-  <StatCard title="XP" value={`${xp} ${t.xp}`} icon="⚡" />
-  <StatCard title={t.level} value={`${t.levelText} ${level}`} icon="🏆" />
-  <StatCard title={t.streak} value={`${streak} ${t.days}`} icon="🚀" />
-</Box>
-
-      <ActiveGoalsSection activeGoals={activeGoals} />
-
-      {/* COMPLETED */}
-      {/* COMPLETED */}
-      <CompletedGoalsSection completedGoals={completedGoals} />
-
-    {/* RECENT */}
-<Typography variant="h5" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
- {t.recentGoals}
-</Typography>
-
-{goals.length === 0 ? (
-  <Box
-    sx={{
-      width: "100%",
-      display: "flex",
-      justifyContent: "center",
-      py: 6,
-    }}
-  >
-    <EmptyState
-      title={t.noRecentGoals}
-      description={t.startCreatingGoals}
-    />
-  </Box>
-) : (
-  <Box
-    sx={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: 2,
-      justifyContent: "flex-start",
-    }}
-  >
-    {goals
-      .slice(-4)
-      .reverse()
-      .map((goal) => (
-        <Box key={goal.id} sx={{ width: 180 }}>
-          <RecentGoalCard goal={goal} />
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: 2,
+            py: 3,
+          }}
+        >
+          <StatCard title={t.total} value={total} icon="📊" />
+          <StatCard title={t.active} value={active} icon="⚡" />
+          <StatCard title={t.completed} value={completed} icon="✅" />
+          <StatCard title={t.progress} value={`${percent}%`} icon="📈" />
+          <StatCard title="XP" value={`${xp} ${t.xp}`} icon="⚡" />
+          <StatCard
+            title={t.level}
+            value={`${t.levelText} ${level}`}
+            icon="🏆"
+          />
+          <StatCard title={t.streak} value={`${streak} ${t.days}`} icon="🚀" />
         </Box>
-      ))}
-  </Box>
-)}
-</Box>
+
+        <ActiveGoalsSection activeGoals={activeGoals} />
+
+        <CompletedGoalsSection completedGoals={completedGoals} />
+
+        <Typography variant="h5" fontWeight="bold" sx={{ mt: 4, mb: 2 }}>
+          {t.recentGoals}
+        </Typography>
+
+        {goals.length === 0 ? (
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              py: 6,
+            }}
+          >
+            <EmptyState
+              title={t.noRecentGoals}
+              description={t.startCreatingGoals}
+            />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2,
+              justifyContent: "flex-start",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexWrap: "wrap",
+
+                justifyContent: {
+                  xs: "center",
+                  sm: "flex-start",
+                },
+
+                alignItems: "flex-start",
+                gap: 2,
+              }}
+            >
+              {goals
+                .slice(-4)
+                .reverse()
+                .map((goal) => (
+                  <Box
+                    key={goal.id}
+                    sx={{
+                      flex: {
+                        xs: "0 0 100%",
+                        sm: "0 0 260px",
+                        md: "0 0 220px",
+                      },
+
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <RecentGoalCard goal={goal} />
+                  </Box>
+                ))}
+            </Box>
+          </Box>
+        )}
+      </Box>
+    </div>
   );
 }

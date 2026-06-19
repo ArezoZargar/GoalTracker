@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGoals } from "../../context/GoalsContext";
-import { Snackbar, Alert, Card, CardContent, Typography, Button } from "@mui/material";
+import {
+  Snackbar,
+  Alert,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+} from "@mui/material";
 import GoalFormFields from "../../components/goals/GoalForm";
 import categories from "../../data/categories";
 import { useTheme } from "@mui/material/styles";
@@ -16,7 +23,7 @@ export default function EditGoalPage() {
   const goals = state.goals || [];
   const goal = goals.find((g) => String(g.id) === String(id));
   const { language } = useLanguage();
-const t = language === "fa" ? fa : en;
+  const t = language === "fa" ? fa : en;
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -28,9 +35,9 @@ const t = language === "fa" ? fa : en;
   const [endDate, setEndDate] = useState("");
   const [color, setColor] = useState("#00f10c");
   const [notes, setNotes] = useState("");
-const theme = useTheme();
-const mode = theme.palette.mode;
-  // fill form when goal loads
+  const theme = useTheme();
+  const mode = theme.palette.mode;
+
   useEffect(() => {
     if (!goal) return;
 
@@ -73,41 +80,42 @@ const mode = theme.palette.mode;
   if (!goal) {
     return (
       <EmptyState
-  title={t.goalNotFound}
-  description={t.goalNotFoundDesc}
-  buttonText={t.back}
-  onClick={() => navigate("/goals")}
-/>
+        title={t.goalNotFound}
+        description={t.goalNotFoundDesc}
+        buttonText={t.back}
+        onClick={() => navigate("/goals")}
+      />
     );
   }
 
   return (
     <Card sx={{ maxWidth: 700, mx: "auto", mt: 3 }}>
       <Card
-  sx={{
-    maxWidth: 700,
-    mx: "auto",
-    mb: 3,
-    borderRadius: 3,
-   
-    color:"#163314",
-    boxShadow: 3,
-  }}
->
-  <CardContent sx={{
-    color: mode === "dark" ? "#fff" : "#163314",
-  }}>
-    <Typography variant="h4" fontWeight="bold">
-        {t.editGoal}
-    </Typography>
+        sx={{
+          maxWidth: 700,
+          mx: "auto",
+          mb: 3,
+          borderRadius: 3,
 
-    <Typography variant="body1" sx={{ mt: 1, opacity: 0.9 }}>
-      {t.editGoalDesc}
-    </Typography>
-  </CardContent>
-</Card>
+          color: "#163314",
+          boxShadow: 3,
+        }}
+      >
+        <CardContent
+          sx={{
+            color: mode === "dark" ? "#fff" : "#163314",
+          }}
+        >
+          <Typography variant="h4" fontWeight="bold">
+            {t.editGoal}
+          </Typography>
+
+          <Typography variant="body1" sx={{ mt: 1, opacity: 0.9 }}>
+            {t.editGoalDesc}
+          </Typography>
+        </CardContent>
+      </Card>
       <CardContent>
-
         <form onSubmit={handleSubmit}>
           <GoalFormFields
             title={title}
@@ -133,23 +141,19 @@ const mode = theme.palette.mode;
           <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
             {t.saveChanges}
           </Button>
-           <Button
-    variant="outlined"
-    fullWidth
-    onClick={() => navigate("/goals")}
-  >
-    {t.cancel}
-  </Button>
+          <Button
+            variant="outlined"
+            fullWidth
+            onClick={() => navigate("/goals")}
+          >
+            {t.cancel}
+          </Button>
         </form>
-
       </CardContent>
 
       <Snackbar open={success} autoHideDuration={1200}>
-        <Alert severity="success">
-         {t.goalCompletedSuccessfully}
-        </Alert>
+        <Alert severity="success">{t.goalCompletedSuccessfully}</Alert>
       </Snackbar>
-
     </Card>
   );
 }

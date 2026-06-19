@@ -10,153 +10,177 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+
 export default function SettingsPage() {
   const { darkMode, setLight, setDark } = useThemeContext();
   const { language, setEnglish, setPersian } = useLanguage();
-const [openReset, setOpenReset] = useState(false);
+  const [openReset, setOpenReset] = useState(false);
   const t = language === "fa" ? fa : en;
-
-  const handleReset = () => {
-    const confirmed = window.confirm(t.resetConfirm);
-
-    if (!confirmed) return;
-
-    localStorage.clear();
-    window.location.reload();
-  };
+  const isRTL = language === "fa";
 
   return (
-    <Box sx={{ p: 4 }}>
-      <Card sx={{ mx: "auto", borderRadius: 3, boxShadow: 3 }}>
-        <CardContent sx={{ p: 4 }}>
-
-          {/* Title */}
-          <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
+    <Box
+      sx={{
+        p: { xs: 2, sm: 3, md: 4 },
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Card
+        sx={{
+          width: "100%",
+          maxWidth: 700,
+          borderRadius: 3,
+          boxShadow: 3,
+        }}
+      >
+        <CardContent sx={{ p: { xs: 2, md: 4 } }}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              mb: 1,
+              textAlign: { xs: "center", sm: isRTL ? "right" : "left" },
+            }}
+          >
             {t.settings}
           </Typography>
 
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{
+              mb: 3,
+              textAlign: { xs: "center", sm: isRTL ? "right" : "left" },
+            }}
+          >
             {t.settingsDescription}
-          </Typography>
-
-          <hr style={{ margin: "20px 0" }} />
-
-          {/* Appearance */}
-          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
-            {t.appearance}
-          </Typography>
-
-          <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
-            {t.appearanceDescription}
           </Typography>
 
           <Typography variant="h6" sx={{ mb: 1 }}>
             {t.theme}
           </Typography>
 
-          <Button
-            variant={darkMode ? "outlined" : "contained"}
-            onClick={setLight}
-            sx={{ mr: 2, fontWeight: "bold"}}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 1,
+              mb: 3,
+            }}
           >
-            {t.light}
-          </Button>
+            <Button
+              fullWidth={true}
+              variant={darkMode ? "outlined" : "contained"}
+              onClick={setLight}
+            >
+              {t.light}
+            </Button>
 
-          <Button
-            variant={darkMode ? "contained" : "outlined"}
-            onClick={setDark}
-            sx={{ fontWeight: "bold" }}
-          >
-            {t.dark}
-          </Button>
+            <Button
+              fullWidth={true}
+              variant={darkMode ? "contained" : "outlined"}
+              onClick={setDark}
+            >
+              {t.dark}
+            </Button>
+          </Box>
 
-          <hr style={{ margin: "25px 0" }} />
-
-          {/* Language */}
           <Typography variant="h6" sx={{ mb: 1 }}>
             {t.language}
           </Typography>
 
-          <Button
-            variant={language === "en" ? "contained" : "outlined"}
-            onClick={setEnglish}
-            sx={{ mr: 2, fontWeight: "bold" }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 1,
+            }}
           >
-            English
-          </Button>
+            <Button
+              fullWidth
+              variant={language === "en" ? "contained" : "outlined"}
+              onClick={setEnglish}
+            >
+              English
+            </Button>
 
-          <Button
-            variant={language === "fa" ? "contained" : "outlined"}
-            onClick={setPersian}
-            sx={{ fontWeight: "bold" }}
-          >
-            فارسی
-          </Button>
-
+            <Button
+              fullWidth
+              variant={language === "fa" ? "contained" : "outlined"}
+              onClick={setPersian}
+            >
+              فارسی
+            </Button>
+          </Box>
         </CardContent>
       </Card>
 
-      {/* Danger Zone */}
       <Card
         sx={{
-          mx: "auto",
+          width: "100%",
+          maxWidth: 700,
           mt: 4,
           borderRadius: 3,
           border: "1px solid #ffcccc",
         }}
       >
-        <CardContent sx={{ p: 3 }}>
-
-          <Typography variant="h5" sx={{ fontWeight: "bold", color: "error.main" }}>
+        <CardContent sx={{ p: { xs: 2, md: 3 } }}>
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: "bold",
+              color: "error.main",
+              textAlign: { xs: "center", sm: isRTL ? "right" : "left" },
+            }}
+          >
             {t.dangerZone}
           </Typography>
 
-          <Typography variant="body2" sx={{ mt: 1, mb: 2 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 1,
+              mb: 2,
+              textAlign: { xs: "center", sm: isRTL ? "right" : "left" },
+            }}
+          >
             {t.dangerDescription}
           </Typography>
 
-        <Button
-  variant="contained"
-  color="error"
-  size="large"
-  sx={{
-    fontWeight: "bold",
-    borderRadius: 2,
-    px: 3,
-  }}
-  onClick={() => setOpenReset(true)}
->
-  {t.resetAll}
-</Button>
-<Dialog open={openReset} onClose={() => setOpenReset(false)}>
-  <DialogTitle>{t.dangerZone}</DialogTitle>
-
-  <DialogContent>
-    <Typography>
-      {t.resetConfirm}
-    </Typography>
-  </DialogContent>
-
-  <DialogActions>
-    <Button onClick={() => handleReset(false)}>
-      {t.cancel}
-    </Button>
-
-    <Button
-      color="error"
-      variant="contained"
-      onClick={() => {
-        localStorage.clear();
-        window.location.reload();
-      }}
-    >
-      {t.resetAll}
-    </Button>
-  </DialogActions>
-</Dialog>
-
+          <Button
+            fullWidth
+            variant="contained"
+            color="error"
+            onClick={() => setOpenReset(true)}
+          >
+            {t.resetAll}
+          </Button>
         </CardContent>
       </Card>
+
+      <Dialog open={openReset} onClose={() => setOpenReset(false)}>
+        <DialogTitle>{t.dangerZone}</DialogTitle>
+
+        <DialogContent>
+          <Typography>{t.resetConfirm}</Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setOpenReset(false)}>{t.cancel}</Button>
+
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
+          >
+            {t.resetAll}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

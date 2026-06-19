@@ -12,12 +12,20 @@ export default function FeedbackSnackbar({
       autoHideDuration={3000}
       onClose={onClose}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      sx={{
+        "& .MuiPaper-root": {
+          mb: { xs: 2, sm: 3 },
+        },
+      }}
     >
       <Alert
         onClose={onClose}
         severity={severity}
         variant="filled"
-        sx={{ width: "100%" }}
+        sx={{
+          width: { xs: "90%", sm: "100%" },
+          fontSize: { xs: "0.85rem", sm: "0.95rem" },
+        }}
       >
         {message}
       </Alert>

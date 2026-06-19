@@ -8,41 +8,41 @@ const categories = [
   {
     value: "Study",
     icon: SchoolIcon,
-     labelEn: "Study",
+    labelEn: "Study",
     labelFa: "مطالعه",
-    color: "#3B82F6", // Blue
+    color: "#3B82F6",
   },
 
   {
     value: "Work",
-      labelEn: "Work",
+    labelEn: "Work",
     labelFa: "کار",
     icon: WorkRoundedIcon,
-    color: "#F59E0B", // Amber
+    color: "#F59E0B",
   },
 
   {
     value: "Health",
-      labelEn: "Health",
+    labelEn: "Health",
     labelFa: "سلامتی",
     icon: FavoriteRoundedIcon,
-    color: "#EF4444", // Red
+    color: "#EF4444",
   },
 
   {
     value: "Fitness",
-     labelEn: "Fitness",
+    labelEn: "Fitness",
     labelFa: "تناسب اندام",
     icon: FitnessCenterRoundedIcon,
-    color: "#22C55E", // Green
+    color: "#22C55E",
   },
 
   {
     value: "Personal",
-     labelEn: "Personal",
+    labelEn: "Personal",
     labelFa: "شخصی",
     icon: PsychologyRoundedIcon,
-    color: "#A855F7", // Purple
+    color: "#A855F7",
   },
 ];
 

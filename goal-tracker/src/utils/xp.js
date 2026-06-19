@@ -1,4 +1,3 @@
-
 export function calculateXP(goals = []) {
   return goals.reduce((sum, goal) => {
     const logs = goal.logs || [];
@@ -9,4 +8,3 @@ export function calculateXP(goals = []) {
 export function calculateLevel(xp) {
   return Math.floor(xp / 100) + 1;
 }
-

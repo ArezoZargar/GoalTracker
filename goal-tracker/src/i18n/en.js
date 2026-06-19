@@ -11,23 +11,20 @@ const en = {
   xp: "XP",
   level: "Level",
   streak: "Streak",
-  fitness:"Fitness",
+  fitness: "Fitness",
   recentGoals: "Recent Goals",
-requiredField: "This field is required",
-fillRequiredFields: "Please fill all required fields",
+  requiredField: "This field is required",
+  fillRequiredFields: "Please fill all required fields",
   noRecentGoals: "No Recent Goals",
-  startCreatingGoals:
-    "Start creating goals to see them here 🚀",
+  startCreatingGoals: "Start creating goals to see them here 🚀",
 
   activeGoals: "Active Goals",
   noActiveGoals: "No Active Goals",
-  createFirstGoal:
-    "Start by creating your first goal 🚀",
+  createFirstGoal: "Start by creating your first goal 🚀",
 
   completedArchive: "Completed (Archive)",
   noCompletedGoals: "No Completed Goals",
-  finishGoalsToSee:
-    "Finish some goals to see them here 🏁",
+  finishGoalsToSee: "Finish some goals to see them here 🏁",
 
   viewArchive: "View Archive",
 
@@ -38,7 +35,7 @@ fillRequiredFields: "Please fill all required fields",
   createGoal: "Create Goal",
   viewAllGoals: "View All Goals",
   export: "Export",
-goaltracker: "Goal Tracker",
+  goaltracker: "Goal Tracker",
   noData: "No Data",
   nothingToShow: "Nothing to show here yet.",
 
@@ -60,94 +57,87 @@ goaltracker: "Goal Tracker",
   days: "days",
   target: "Target",
 
+  addProgress: "+ Progress",
+  details: "Details",
 
-addProgress: "+ Progress",
-details: "Details",
+  pause: "Pause",
+  resume: "Resume",
 
-pause: "Pause",
-resume: "Resume",
+  complete: "Complete",
+  edit: "Edit",
 
-complete: "Complete",
-edit: "Edit",
+  goalCompletedSuccessfully: "🎉 Goal Completed Successfully!",
 
+  activeStatus: "Active",
+  pausedStatus: "Paused",
+  levelText: "Level",
+  exportFileName: "goals.json",
+  title: "Title",
+  category: "Category",
 
-goalCompletedSuccessfully:
-  "🎉 Goal Completed Successfully!",
+  daily: "Daily",
+  count: "Count",
+  time: "Time",
 
-activeStatus: "Active",
-pausedStatus: "Paused",
-levelText: "Level",
-exportFileName: "goals.json",
-title: "Title",
-category: "Category",
+  editGoal: "Edit Goal",
+  editGoalDesc: "Update your goal and continue your progress.",
+  saveChanges: "Save Changes",
+  goalNotFound: "Goal Not Found",
+  goalNotFoundDesc: "This goal does not exist or has been removed",
+  back: "Back",
 
-daily: "Daily",
-count: "Count",
-time: "Time",
+  status: "Status",
+  created: " Created",
 
-editGoal: "Edit Goal",
-editGoalDesc: "Update your goal and continue your progress.",
-saveChanges: "Save Changes",
-goalNotFound: "Goal Not Found",
-goalNotFoundDesc: "This goal does not exist or has been removed",
-back: "Back",
+  history: "History",
+  keepGoing: " Keep going 🚀",
 
-status: "Status",
-created: " Created",
+  notes: "Notes",
+  study: "Study",
+  work: "Work",
+  personal: "Personal",
+  health: "Health",
+  goalsManagement: "Goals Management 🎯",
+  goalsDescription: "Create, track and manage your goals in one place",
+  noGoalsYet: "No Goals Yet",
 
-history: "History",
-keepGoing: " Keep going 🚀",
+  noGoalsFound: "No Goals Found",
+  noGoalsInCategory: "No goals in this category yet",
+  adjustSearch: "Try adjusting your search or filter.",
+  searchGoals: "SearchGoals",
+  all: "All",
 
-notes: "Notes",
-study: "Study",
-work: "Work",
-personal:"Personal",
-health:"Health",
-goalsManagement: "Goals Management 🎯",
-goalsDescription: "Create, track and manage your goals in one place",
-noGoalsYet: "No Goals Yet",
+  paused: "Paused",
 
-noGoalsFound: "No Goals Found",
-noGoalsInCategory: "No goals in this category yet",
-adjustSearch: "Try adjusting your search or filter.",
-searchGoals: "SearchGoals",
-all: "All",
+  allCategories: "All Categories",
 
-paused: "Paused",
+  newest: "Newest",
 
-allCategories: "All Categories",
+  categorySort: "Category",
+  create: "Create Goal",
 
-
-
-newest: "Newest",
-
-
-categorySort: "Category",
-create: "Create Goal",
-  
   categoriesDescription: "Track progress across all your goal categories",
-newCategory: "+ New Category",
-categoryName: "Category Name",
-add: "Add",
-pageNotFound: "Page Not Found",
-goHome: "Go Home",
+  newCategory: "+ New Category",
+  categoryName: "Category Name",
+  add: "Add",
+  pageNotFound: "Page Not Found",
+  goHome: "Go Home",
 
-settingsDescription: "Manage your app appearance and preferences",
+  settingsDescription: "Manage your app appearance and preferences",
 
-appearance: "Appearance",
-appearanceDescription: "Customize how the app looks and feels",
+  appearance: "Appearance",
+  appearanceDescription: "Customize how the app looks and feels",
 
-theme: "Theme",
-light: "Light",
-dark: "Dark",
+  theme: "Theme",
+  light: "Light",
+  dark: "Dark",
 
-language: "Language",
+  language: "Language",
 
-dangerZone: "Danger Zone ⚠️",
-dangerDescription: "This action will permanently delete all your data.",
-resetAll: "Reset All Data",
+  dangerZone: "Danger Zone ⚠️",
+  dangerDescription: "This action will permanently delete all your data.",
+  resetAll: "Reset All Data",
 
-resetConfirm: "Are you sure? This will permanently delete all your data."
-        
+  resetConfirm: "Are you sure? This will permanently delete all your data.",
 };
 export default en;

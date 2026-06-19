@@ -2,13 +2,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { useLanguage } from "../../context/LanguagesContext";
 import en from "../../i18n/en";
 import fa from "../../i18n/fa";
-
-export default function EmptyState({
-  title ,
-  description,
-  buttonText,
-  onClick,
-}) {
+export default function EmptyState({ title, description, children }) {
   const { language } = useLanguage();
 
   const t = language === "fa" ? fa : en;
@@ -17,35 +11,32 @@ export default function EmptyState({
     <Box
       sx={{
         textAlign: "center",
-        py: 6,
+        py: { xs: 4, sm: 6 },
         px: 2,
       }}
     >
-      {/* ICON */}
-      <Typography sx={{ fontSize: 50, mb: 1 }}>
-        📭
-      </Typography>
+      <Typography sx={{ fontSize: { xs: 36, sm: 50 }, mb: 1 }}>📭</Typography>
 
-      {/* TITLE */}
-      <Typography variant="h6" fontWeight="bold">
+      <Typography
+        sx={{
+          fontSize: { xs: "1rem", sm: "1.25rem" },
+          fontWeight: "bold",
+        }}
+      >
         {title || t.noData}
       </Typography>
 
-      {/* DESCRIPTION */}
-      <Typography color="text.secondary" sx={{ mt: 1 }}>
+      <Typography
+        color="text.secondary"
+        sx={{
+          mt: 1,
+          fontSize: { xs: "0.85rem", sm: "1rem" },
+        }}
+      >
         {description || t.nothingToShow}
       </Typography>
 
-      {/* BUTTON */}
-      {buttonText && (
-        <Button
-          variant="contained"
-          sx={{ mt: 2, borderRadius: 2 }}
-          onClick={onClick}
-        >
-          {buttonText}
-        </Button>
-      )}
+      {children}
     </Box>
   );
 }

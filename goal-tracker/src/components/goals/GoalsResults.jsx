@@ -34,9 +34,7 @@ export default function GoalsResults({
         icon="🔍"
         title={t.noGoalsFound}
         description={
-          categoryFilter
-            ? `${t.noGoalsInCategory} `
-            : t.adjustSearch
+          categoryFilter ? `${t.noGoalsInCategory} ` : t.adjustSearch
         }
       >
         <Button variant="contained" onClick={() => navigate("/create")}>
