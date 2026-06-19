@@ -55,15 +55,26 @@ const statusLabels = {
 };
   const cardColor = categoryColor[goal.category] || "#24b910";
 const buttonStyle = {
-  borderRadius: 2,
+   borderRadius: 2,
   fontWeight: "bold",
   textTransform: "none",
-  transition: "all .2s ease",
 
-  width: "5rem",        
-  height: 30,           
-  whiteSpace: "nowrap", 
- 
+  minWidth: {
+    xs: "100%",
+    sm: "5rem",
+  },
+
+  height: {
+    xs: 36,
+    md: 30,
+  },
+
+  fontSize: {
+    xs: "0.75rem",
+    md: "0.85rem",
+  },
+
+  transition: "all .2s ease",
 
   "&:hover": {
     transform: "translateY(-2px)",
@@ -81,14 +92,19 @@ const buttonStyle = {
     <Card
       sx={{
         mb: 2,
-        borderRadius: 4,
+      
         overflow: "hidden",
 
         border: "1px solid",
         borderColor: "divider",
         borderLeft: `6px solid ${cardColor}`,
         transition: "all .3s ease",
+width: "100%",
 
+borderRadius: {
+  xs: 3,
+  md: 4,
+},
         "&:hover": {
           transform: "translateY(-5px)",
           boxShadow: 6,
@@ -103,13 +119,28 @@ const buttonStyle = {
   }}
 >
         {/* TITLE */}
-        <Typography variant="h5" fontWeight="bold" gutterBottom>
+        <Typography
+  fontWeight="bold"
+  gutterBottom
+  sx={{
+    fontSize: {
+      xs: "1.1rem",
+      sm: "1.3rem",
+      md: "1.5rem",
+    },
+  }}
+>
           {goal.title}
         </Typography>
 
         {/* CATEGORY + STATUS */}
-        <Stack direction="row" spacing={1} mb={2
-        }>
+      <Stack
+  direction="row"
+  spacing={1}
+  mb={2}
+  flexWrap="wrap"
+  useFlexGap
+>
           <Chip
             label={categoryLabels[goal.category]}
             color="success"
@@ -149,20 +180,29 @@ const buttonStyle = {
           variant="determinate"
           value={progressPercent}
           sx={{
-            height: 10,
+          height: {
+  xs: 8,
+  md: 10,
+},
             borderRadius: 5,
             mb: 2,
           }}
         />
 
         {/* BUTTONS */}
-        <Box
+ <Box
   sx={{
-  mt: 2,
-  display: "flex",
-  flexWrap: "wrap",
-  gap: 1,
-}}
+    mt: 2,
+    display: "grid",
+
+    gridTemplateColumns: {
+      xs: "1fr",
+      sm: "repeat(2,1fr)",
+      md: "repeat(3,auto)",
+    },
+
+    gap: 1,
+  }}
 >
           {/* ADD PROGRESS */}
           <Button

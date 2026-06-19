@@ -1,26 +1,26 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 export default function AppShell() {
   return (
-    <Box sx={{  display: "flex",
-    alignItems: "flex-start", }}>
+    <Box sx={{ display: "flex" }}>
+
       {/* Sidebar */}
-      <Navbar />
+      <Sidebar />
 
       {/* Main Content */}
       <Box
-        component="main"
-        sx={{
-          flex: 1,
-    p: 3,
-    minWidth: 0,
-    
+  component="main"
+  sx={{
+    ml: { xs: "100px",sm :"200px", md: "240px" }, 
+    p: { xs: 0.5, md: 3 },
+    width: "100%",
   }}
-      >
+>
         <Outlet />
       </Box>
+
     </Box>
   );
 }

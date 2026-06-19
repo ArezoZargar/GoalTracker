@@ -13,14 +13,30 @@ export default function ActiveGoalsSection({ activeGoals }) {
   return (
     <>
       <Typography
-        variant="h5"
-        fontWeight="bold"
-        sx={{ mt: 4, mb: 2 }}
-      >
+  fontWeight="bold"
+  sx={{
+    mt: { xs: 3, md: 4 },
+    mb: 2,
+    fontSize: {
+      xs: "1.2rem",
+      sm: "1.4rem",
+      md: "1.6rem",
+    },
+  }}
+>
         {t.activeGoals}
       </Typography>
 
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+     <Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    gap: {
+      xs: 1.5,
+      md: 2,
+    },
+  }}
+>
         {activeGoals.length === 0 ? (
   <EmptyState
     title={t.noActiveGoals}

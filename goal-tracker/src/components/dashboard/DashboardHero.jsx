@@ -22,6 +22,20 @@ export default function DashboardHero({
    const theme = useTheme();
   const mode = theme.palette.mode;
   const actionButtonStyle = {
+    width: {
+  xs: "100%",
+  sm: "auto",
+},
+
+fontSize: {
+  xs: "0.8rem",
+  md: "0.95rem",
+},
+
+py: {
+  xs: 1,
+  md: 1.3,
+},
     bgcolor: mode === "dark" ?"#22c55e" :"#08ad10",
     color: "white",
     borderRadius: 2,
@@ -36,23 +50,44 @@ export default function DashboardHero({
 
   return (
     <Card
-      sx={{
-        p: 4,
-        borderRadius: 4,
-        mb: 3,
-      }}
+     sx={{
+  p: {
+    xs: 2,
+    sm: 3,
+    md: 4,
+  },
+  borderRadius: {
+    xs: 2,
+    md: 4,
+  },
+  mb: 3,
+}}
     >
       <CardContent>
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-          gutterBottom
-        >
+     <Typography
+  fontWeight="bold"
+  gutterBottom
+  sx={{
+    fontSize: {
+      xs: "1.3rem",
+      sm: "1.7rem",
+      md: "2rem",
+    },
+  }}
+>
           {t.welcomeDear}
         </Typography>
 
         <Typography
-          variant="h5"
+          sx={{
+  fontWeight: "bold",
+  mb: 1,
+  fontSize: {
+    xs: "1rem",
+    sm: "1.3rem",
+    md: "1.5rem",
+  },
+}}
           fontWeight="bold"
           mb={1}
         >
@@ -60,6 +95,13 @@ export default function DashboardHero({
         </Typography>
 
         <Typography
+        sx={{
+  mb: 3,
+  fontSize: {
+    xs: "0.85rem",
+    sm: "1rem",
+  },
+}}
           color="text.secondary"
           sx={{ mb: 3 }}
         >
@@ -67,11 +109,11 @@ export default function DashboardHero({
         </Typography>
 
         <Stack
-          direction="row"
-          spacing={2}
-          flexWrap="wrap"
-          useFlexGap
-        >
+  direction={{ xs: "column", sm: "row" }}
+  spacing={2}
+  flexWrap="wrap"
+  useFlexGap
+>
           <Button
             sx={actionButtonStyle}
             variant="contained"

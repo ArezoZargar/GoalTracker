@@ -79,15 +79,23 @@ export default function DashboardPage() {
         streak={streak}
       />
 
-      <Grid container spacing={2} mb={2} sx={{ py: 3 }}>
-        <StatCard title={t.total} value={total} icon="📊" />
-        <StatCard title={t.active} value={active} icon="⚡" />
-        <StatCard title={t.completed} value={completed} icon="✅" />
-        <StatCard title={t.progress} value={`${percent}%`} icon="📈" />
-        <StatCard title="XP"  value={`${xp} ${t.xp}`} icon="⚡" />
-        <StatCard title={t.level} value={`${t.levelText} ${level}`} icon="🏆" />
-        <StatCard title={t.streak} value={`${streak} ${t.days}`} icon="🚀" />
-      </Grid>
+  <Box
+  sx={{
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 2,
+    py: 3,
+  }}
+>
+  <StatCard title={t.total} value={total} icon="📊" />
+  <StatCard title={t.active} value={active} icon="⚡" />
+  <StatCard title={t.completed} value={completed} icon="✅" />
+  <StatCard title={t.progress} value={`${percent}%`} icon="📈" />
+  <StatCard title="XP" value={`${xp} ${t.xp}`} icon="⚡" />
+  <StatCard title={t.level} value={`${t.levelText} ${level}`} icon="🏆" />
+  <StatCard title={t.streak} value={`${streak} ${t.days}`} icon="🚀" />
+</Box>
 
       <ActiveGoalsSection activeGoals={activeGoals} />
 
