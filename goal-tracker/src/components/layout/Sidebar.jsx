@@ -42,6 +42,7 @@ export default function Sidebar() {
         position: "fixed",
         top: 0,
         [isRTL ? "right" : "left"]: 0,
+         mt: 3,
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 4 }}>
