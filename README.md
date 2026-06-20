@@ -1,4 +1,4 @@
-<img width="2880" height="1914" alt="localhost_5173_ (2)" src="https://github.com/user-attachments/assets/2b7b2e33-3799-4236-8968-c0fdaadae1aa" /># Goal Tracker
+# Goal Tracker
 🚀 A modern and responsive Goal Tracker web application built with React and Vite. The app allows users to create goals, track progress, earn XP, maintain streaks, and manage goals through a clean dashboard interface. It supports both English and Persian languages with automatic RTL/LTR layout switching.
 
 
