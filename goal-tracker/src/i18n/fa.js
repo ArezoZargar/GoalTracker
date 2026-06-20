@@ -142,6 +142,9 @@ const fa = {
   resetAll: "حذف همه داده‌ها",
 
   resetConfirm: "آیا مطمئن هستید؟ تمام داده‌ها حذف خواهد شد.",
+  goalNotFound: "هدف پیدا نشد",
+goalNotFoundMessage: "هدفی که به دنبال آن هستید وجود ندارد.",
+backToGoals: "بازگشت به اهداف",
 };
 
 export default fa;

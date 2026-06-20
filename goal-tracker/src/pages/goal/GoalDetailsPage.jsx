@@ -4,7 +4,12 @@ import { Box, Button } from "@mui/material";
 import GoalDetails from "../../components/goals/GoalDetails";
 import { useNavigate } from "react-router-dom";
 import EmptyState from "../../components/common/EmptyState";
+import { useLanguage } from "../../context/LanguagesContext";
+import en from "../../i18n/en";
+import fa from "../../i18n/fa";
 export default function GoalDetailsPage() {
+  const { language } = useLanguage();
+const t = language === "fa" ? fa : en;
   const { id } = useParams();
   const { state, dispatch } = useGoals();
   const navigate = useNavigate();
@@ -13,8 +18,8 @@ export default function GoalDetailsPage() {
   if (!goal) {
     return (
       <EmptyState
-        title="Goal Not Found"
-        description="The goal you are looking for does not exist."
+       title={t.goalNotFound}
+  description={t.goalNotFoundDescription}
       >
         <Button
           variant="contained"
@@ -25,7 +30,7 @@ export default function GoalDetailsPage() {
             px: { xs: 2, sm: 3 },
           }}
         >
-          Back to Goals
+          {t.backToGoals}
         </Button>
       </EmptyState>
     );

@@ -139,5 +139,8 @@ const en = {
   resetAll: "Reset All Data",
 
   resetConfirm: "Are you sure? This will permanently delete all your data.",
+  goalNotFound: "Goal Not Found",
+goalNotFoundMessage: "The goal you are looking for does not exist.",
+backToGoals: "Back to Goals",
 };
 export default en;
