@@ -15,6 +15,7 @@ const en = {
   recentGoals: "Recent Goals",
   requiredField: "This field is required",
   fillRequiredFields: "Please fill all required fields",
+  endDateAfterStartDate: "End date must be after start date",
   noRecentGoals: "No Recent Goals",
   startCreatingGoals: "Start creating goals to see them here 🚀",
 

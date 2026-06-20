@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useReducer, useEffect } from "react";
 
 import { load, STORAGE_KEYS } from "../utils/storage";
@@ -7,7 +8,7 @@ const GoalsContext = createContext();
 const XP_PER_ACTION = 20;
 
 const initialState = {
-  goals: load(STORAGE_KEYS.goals, []),
+  goals: load(STORAGE_KEYS.GOALS, []),
   loading: false,
 };
 
@@ -112,7 +113,7 @@ export function GoalsProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.goals, JSON.stringify(state.goals));
+    localStorage.setItem(STORAGE_KEYS.GOALS, JSON.stringify(state.goals));
   }, [state.goals]);
   return (
     <GoalsContext.Provider value={{ state, dispatch }}>

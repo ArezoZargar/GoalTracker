@@ -76,8 +76,6 @@ export default function DashboardHero({ navigate, exportGoals, title }) {
               md: "1.5rem",
             },
           }}
-          fontWeight="bold"
-          mb={1}
         >
           {title}
         </Typography>
@@ -91,7 +89,6 @@ export default function DashboardHero({ navigate, exportGoals, title }) {
             },
           }}
           color="text.secondary"
-          sx={{ mb: 3 }}
         >
           {t.dashboardDescription}
         </Typography>
@@ -105,7 +102,7 @@ export default function DashboardHero({ navigate, exportGoals, title }) {
           <Button
             sx={actionButtonStyle}
             variant="contained"
-            onClick={() => navigate("/create")}
+            onClick={() => navigate("/goals/new")}
           >
             {t.createGoal}
           </Button>

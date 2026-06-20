@@ -42,7 +42,7 @@ export default function ActiveGoalsSection({ activeGoals }) {
             title={t.noActiveGoals}
             description={t.startCreatingGoals}
             buttonText={t.createGoal}
-            onClick={() => navigate("/create")}
+            onClick={() => navigate("/goals/new")}
           />
         ) : (
           activeGoals.map((goal) => <GoalCard key={goal.id} goal={goal} />)

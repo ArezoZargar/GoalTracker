@@ -51,8 +51,9 @@ export default function CreateGoal() {
       newErrors.startDate = t.requiredField;
     }
 
-    if (!endDate) {
-      newErrors.endDate = t.requiredField;
+    if (endDate && startDate && new Date(endDate) < new Date(startDate)) {
+      newErrors.endDate =
+        t.endDateAfterStartDate || "End date must be after start date";
     }
 
     setErrors(newErrors);
