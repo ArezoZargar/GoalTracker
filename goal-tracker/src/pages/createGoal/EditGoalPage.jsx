@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGoals } from "../../context/GoalsContext";
 import {
@@ -15,6 +15,7 @@ import { useTheme } from "@mui/material/styles";
 import { useLanguage } from "../../context/LanguagesContext";
 import en from "../../i18n/en";
 import fa from "../../i18n/fa";
+import EmptyState from "../../components/common/EmptyState";
 export default function EditGoalPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -27,29 +28,16 @@ export default function EditGoalPage() {
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [type, setType] = useState("daily");
-  const [target, setTarget] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [color, setColor] = useState("#00f10c");
-  const [notes, setNotes] = useState("");
+  const [title, setTitle] = useState(goal?.title ?? "");
+  const [category, setCategory] = useState(goal?.category ?? "");
+  const [type, setType] = useState(goal?.type ?? "daily");
+  const [target, setTarget] = useState(goal?.target ?? "");
+  const [startDate, setStartDate] = useState(goal?.startDate ?? "");
+  const [endDate, setEndDate] = useState(goal?.endDate ?? "");
+  const [color, setColor] = useState(goal?.color ?? "#00f10c");
+  const [notes, setNotes] = useState(goal?.notes ?? "");
   const theme = useTheme();
   const mode = theme.palette.mode;
-
-  useEffect(() => {
-    if (!goal) return;
-
-    setTitle(goal.title);
-    setCategory(goal.category);
-    setType(goal.type);
-    setTarget(goal.target);
-    setStartDate(goal.startDate || "");
-    setEndDate(goal.endDate || "");
-    setColor(goal.color || "#00f10c");
-    setNotes(goal.notes || "");
-  }, [goal]);
 
   function handleSubmit(e) {
     e.preventDefault();

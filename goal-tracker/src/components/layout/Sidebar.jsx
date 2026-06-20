@@ -15,7 +15,7 @@ export default function Sidebar() {
   const menu = [
     { path: "/", label: t.dashboard },
     { path: "/goals", label: t.goals },
-    { path: "/create", label: t.createGoal },
+    { path: "/goals/new", label: t.createGoal },
     { path: "/categories", label: t.categories },
     { path: "/settings", label: t.settings },
   ];

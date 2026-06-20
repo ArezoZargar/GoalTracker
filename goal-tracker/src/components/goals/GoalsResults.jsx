@@ -21,7 +21,7 @@ export default function GoalsResults({
         title={t.noGoalsYet}
         description={t.createFirstGoal}
       >
-        <Button variant="contained" onClick={() => navigate("/create")}>
+        <Button variant="contained" onClick={() => navigate("/goals/new")}>
           {t.createGoal}
         </Button>
       </EmptyState>
@@ -37,7 +37,7 @@ export default function GoalsResults({
           categoryFilter ? `${t.noGoalsInCategory} ` : t.adjustSearch
         }
       >
-        <Button variant="contained" onClick={() => navigate("/create")}>
+        <Button variant="contained" onClick={() => navigate("/goals/new")}>
           {t.createGoal}
         </Button>
       </EmptyState>

@@ -67,7 +67,7 @@ export default function GoalsListPage() {
 
   return (
     <div>
-      <GoalsHeader onCreate={() => navigate("/create")} />
+      <GoalsHeader onCreate={() => navigate("/goals/new")} />
 
       <GoalsFilters
         search={search}

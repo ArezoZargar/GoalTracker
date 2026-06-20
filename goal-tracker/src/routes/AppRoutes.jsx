@@ -20,6 +20,7 @@ export default function AppRoutes() {
       <Route element={<AppShell />}>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/goals" element={<GoalsListPage />} />
+        <Route path="/goals/new" element={<CreateGoalPage />} />
         <Route path="/create" element={<CreateGoalPage />} />
         <Route path="/goals/edit/:id" element={<EditGoalPage />} />
         <Route path="/goals/:id" element={<GoalDetailsPage />} />

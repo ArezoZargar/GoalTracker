@@ -15,6 +15,7 @@ const fa = {
   recentGoals: "هدف‌های اخیر",
   requiredField: "این قسمت الزامی است",
   fillRequiredFields: "لطفاً همه فیلدهای ضروری را پر کنید",
+  endDateAfterStartDate: "تاریخ پایان باید بعد از تاریخ شروع باشد",
   noRecentGoals: "هیچ هدف اخیری وجود ندارد",
   startCreatingGoals: "برای مشاهده هدف‌ها، اولین هدف خود را ایجاد کنید 🚀",
 
